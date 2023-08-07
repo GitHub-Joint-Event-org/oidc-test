@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: test-larger-runner
+    runs-on: test-group
     steps:
       - name: Checkout
         uses: actions/checkout@v2
