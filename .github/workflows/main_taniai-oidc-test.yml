@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://taniaitest.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_f6679ad2827b42dfb2d0714d59b07b76 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_70c1d1fff6ef423f960ed89d62c9afba }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_e4fc258a98e445ff94b262831b2244e2 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_d8624df39251461c840589aac7787bba }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: taniaitest.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f6679ad2827b42dfb2d0714d59b07b76 }}/hello:${{ github.sha }}
+        tags: taniaitest.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e4fc258a98e445ff94b262831b2244e2 }}/hello:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'taniai-oidc-test'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_5232843536c64609ac56bfb5736335c6 }}
-        images: 'taniaitest.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f6679ad2827b42dfb2d0714d59b07b76 }}/hello:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_0e46bdf26e964e54ac18982d44583d15 }}
+        images: 'taniaitest.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e4fc258a98e445ff94b262831b2244e2 }}/hello:${{ github.sha }}'
